@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from django.contrib import auth
 
 
 # Create your views here.
@@ -22,3 +23,18 @@ def signup(request):
                 User.objects.create_user(
                     username=user_name, password=possword1)
                 return redirect('主页')
+
+
+def login(request):
+    if request.method == 'GET':
+        return render(request, 'login.html')
+    elif request.method == 'POST':
+        user_name = request.POST['用户名']
+        possword = request.POST['密码']
+        user = auth.authenticate(username=user_name, password=possword)
+        if user is None:
+            return render(request, 'login.html', {'错误': '用户或密码错误'})
+
+        else:
+            auth.login(request, user)
+            return redirect('主页')
