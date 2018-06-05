@@ -1,0 +1,23 @@
+{% extends "theme.html" %}
+{% block content %}
+	<h2 align="center">Product Hunt 发布新应用</h2>
+	<br>
+	<form method="POST" 	action="{% url "登录页面" %}" align="center" enctype="multipart/form-data">
+		{% csrf_token %}
+		APP名称：<br><input name='APP名称' type="text">
+		<br>
+		<br>
+		介绍：<br><textarea name="介绍" cols="100" rows="10"></textarea>
+		<br>
+		APP链接：<br><input name='APP链接' type="text">
+		<br>
+		APP缩略图：<br><input name='APP缩略图' type="file">
+		<br>
+		<br>
+		APP大图：<br><input name='APP大图' type="file">
+		<br>
+		<br>
+		<input class="btn btn-primary" type="submit" value="立即发布">
+		<br>
+	</form>
+{% endblock content %}
