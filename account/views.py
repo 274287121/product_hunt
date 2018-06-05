@@ -38,3 +38,9 @@ def login(request):
         else:
             auth.login(request, user)
             return redirect('主页')
+
+
+def logout(request):
+    if request.method == 'POST':
+        auth.logout(request)
+        return redirect('主页')
