@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
 import products.views
+from django.conf.urls.static import static
+from django.conf import settings
 
 
 urlpatterns = [
@@ -24,4 +25,4 @@ urlpatterns = [
     path('', products.views.product_list, name='主页'),
     path('account/', include('account.urls')),
     path('products/', include('products.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

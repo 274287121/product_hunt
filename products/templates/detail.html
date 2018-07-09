@@ -1,25 +1,17 @@
 {% extends "theme.html" %}
 {% block content %}
 	<div class="container">
-	{% for product in products.all %}
-	
 	<div class="row">
 		<div class="card" style="width:18rem;">
 			<img src="{{product.icon.url}}" height="400" alt='card image cap'>
 		</div>
 		<div class="col-md-8" style="padding-left:30px">
-			<h3><a href="products/{{ product.id}}">{{ product.title}}</a></h3>
+			<h3>{{ product.title}}</a></h3>
 			<br>
 			{{ product.intro}}
-			<br>
-			作者：{{ product.hunter}}
-			<br>
-			<br>
-			时间：{{ product.pub_date}}
 			<br>
 			<br>
 		</div>
 	</div>
-	{% endfor %}
 	</div>
 {% endblock content %}
